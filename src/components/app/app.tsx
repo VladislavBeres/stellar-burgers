@@ -44,11 +44,6 @@ const App = () => {
       <Routes location={background || location}>
         <Route path='/' element={<ConstructorPage />} />
         <Route path='/feed' element={<Feed />} />
-        <Route path='/feed/:number' element={<OrderInfo showHeader />} />
-        <Route
-          path='/ingredients/:id'
-          element={<IngredientDetails showHeader />}
-        />
         <Route
           path='/login'
           element={
