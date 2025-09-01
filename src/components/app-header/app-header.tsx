@@ -1,4 +1,10 @@
 import { FC } from 'react';
 import { AppHeaderUI } from '@ui';
 
-export const AppHeader: FC = () => <AppHeaderUI userName='' />;
+type TAppHeaderUIProps = {
+  userName: string | undefined;
+};
+
+export const AppHeader: FC<TAppHeaderUIProps> = ({ userName }) => (
+  <AppHeaderUI userName={userName} />
+);

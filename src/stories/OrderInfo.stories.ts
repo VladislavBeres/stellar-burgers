@@ -17,6 +17,7 @@ type Story = StoryObj<typeof meta>;
 
 export const DefaultOrderInfo: Story = {
   args: {
+    showHeader: true,
     orderInfo: {
       ingredientsInfo: {
         bun: {
