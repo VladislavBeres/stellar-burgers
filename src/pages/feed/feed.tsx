@@ -22,12 +22,5 @@ export const Feed: FC = () => {
     return <Preloader />;
   }
 
-  return (
-    <FeedUI
-      orders={orders}
-      handleGetFeeds={() => {
-        handleGetAllFeeds;
-      }}
-    />
-  );
+  return <FeedUI orders={orders} handleGetFeeds={handleGetAllFeeds} />;
 };

@@ -1,5 +1,23 @@
+export type Order = {
+  _id: string;
+  status: 'ready' | 'pending' | string;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  number: number;
+  ingredients: string[];
+};
+
+export type Feed = {
+  orders?: Order[];
+  total: number;
+  totalToday: number;
+  isLoading?: boolean;
+  error?: string | null;
+};
+
 export type FeedInfoUIProps = {
-  feed: any;
+  feed: Feed;
   readyOrders: number[];
   pendingOrders: number[];
 };

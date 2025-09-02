@@ -5,7 +5,7 @@ import { BurgerConstructorUI } from '@ui';
 
 import { useDispatch, useSelector } from '../../services/store';
 
-import { isAuchCheckedSelector } from '../../services/slices/user';
+import { isAuthCheckedSelector } from '../../services/slices/user';
 import { clearAll, selectItems } from '../../services/slices/constructor';
 import {
   createOrder,
@@ -20,7 +20,7 @@ export const BurgerConstructor: FC = () => {
   const constructorItems = useSelector(selectItems);
   const orderRequest = useSelector(getOrderRequest);
   const orderModalData = useSelector(getOrderModalData);
-  const isAuth = useSelector(isAuchCheckedSelector);
+  const isAuth = useSelector(isAuthCheckedSelector);
 
   useEffect(() => {
     if (orderModalData) {

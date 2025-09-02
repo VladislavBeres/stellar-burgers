@@ -18,18 +18,17 @@ export const loginUser = createAsyncThunk('user/loginUser', loginUserApi);
 export const logoutUser = createAsyncThunk('user/logoutUser', logoutApi);
 
 type TUserState = {
-  isAuchChecked: boolean;
+  isAuthChecked: boolean;
   user: TUser;
   error: string | undefined;
+  isLoading: boolean;
 };
 
 const initialState: TUserState = {
-  isAuchChecked: false,
-  user: {
-    email: '',
-    name: ''
-  },
-  error: ''
+  isAuthChecked: false,
+  user: { email: '', name: '' },
+  error: '',
+  isLoading: false
 };
 
 export const userSlice = createSlice({
@@ -37,17 +36,18 @@ export const userSlice = createSlice({
   initialState,
   reducers: {},
   selectors: {
-    isAuchCheckedSelector: (state) => state.isAuchChecked,
-    getUser: (state) => state.user,
-    getUserName: (state) => state.user.name,
-    getError: (state) => state.error
+    isAuthCheckedSelector: (state: TUserState) => state.isAuthChecked,
+    getUser: (state: TUserState) => state.user,
+    getUserName: (state: TUserState) => state.user.name,
+    getError: (state: TUserState) => state.error
   },
   extraReducers: (builder) => {
     builder
       .addCase(logoutUser.fulfilled, (state) => {
-        state.isAuchChecked = false;
+        state.isAuthChecked = false;
         state.user = { email: '', name: '' };
         state.error = '';
+        state.isLoading = false;
       })
       .addMatcher(
         isAnyOf(
@@ -57,9 +57,10 @@ export const userSlice = createSlice({
           loginUser.fulfilled
         ),
         (state, action) => {
-          state.isAuchChecked = true;
+          state.isAuthChecked = true;
           state.user = action.payload.user;
           state.error = '';
+          state.isLoading = false;
         }
       )
       .addMatcher(
@@ -71,8 +72,8 @@ export const userSlice = createSlice({
           logoutUser.rejected
         ),
         (state, action) => {
-          state.isAuchChecked = false;
           state.error = action.error.message;
+          state.isLoading = false;
         }
       )
       .addMatcher(
@@ -84,12 +85,12 @@ export const userSlice = createSlice({
           logoutUser.pending
         ),
         (state) => {
-          state.isAuchChecked = false;
+          state.isLoading = true;
           state.error = '';
         }
       );
   }
 });
 
-export const { isAuchCheckedSelector, getUser, getUserName, getError } =
+export const { isAuthCheckedSelector, getUser, getUserName, getError } =
   userSlice.selectors;
