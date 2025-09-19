@@ -1,5 +1,5 @@
 import { orderBurgerApi } from '@api';
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { TOrder } from '@utils-types';
 
 export const createOrder = createAsyncThunk(
@@ -13,7 +13,7 @@ type TNewOrderState = {
   error: string | undefined;
 };
 
-const initialState: TNewOrderState = {
+export const initialState: TNewOrderState = {
   orderRequest: false,
   orderModalData: null,
   error: undefined
@@ -23,7 +23,7 @@ export const createOrderSlice = createSlice({
   name: 'newOrder',
   initialState,
   reducers: {
-    resetOrder: (state) => initialState
+    resetOrder: () => initialState
   },
   selectors: {
     getOrderRequest: (state) => state.orderRequest,
@@ -34,12 +34,17 @@ export const createOrderSlice = createSlice({
       .addCase(createOrder.fulfilled, (state, action) => {
         state.orderRequest = false;
         state.orderModalData = action.payload.order;
+        state.error = undefined;
       })
       .addCase(createOrder.rejected, (state, action) => {
-        state.error = action.error.message;
+        state.orderRequest = false;
+        state.orderModalData = null;
+        state.error = action.error?.message;
       })
       .addCase(createOrder.pending, (state) => {
         state.orderRequest = true;
+        state.error = undefined;
+        state.orderModalData = null;
       });
   }
 });

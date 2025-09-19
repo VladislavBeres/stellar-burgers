@@ -13,7 +13,7 @@ type TIngredientsState = {
   error: string;
 };
 
-const initialState: TIngredientsState = {
+export const initialState: TIngredientsState = {
   ingredients: [],
   loading: false,
   error: ''
@@ -36,7 +36,7 @@ export const ingredientsSlise = createSlice({
       })
       .addCase(getIngredientsList.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message || 'Что-то пошло не так';
+        state.error = action.error?.message || 'Что-то пошло не так';
       })
       .addCase(getIngredientsList.fulfilled, (state, action) => {
         state.loading = false;

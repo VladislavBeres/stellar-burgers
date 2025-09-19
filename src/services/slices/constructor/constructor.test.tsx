@@ -52,10 +52,10 @@ describe('constructor slice', () => {
     carbohydrates: 40
   };
 
-  // --- тест добавления ингредиента --- \\\
+  //тест: добавление ингредиента\\\
   describe('addItem action', () => {
-    //тест добавления булки
-    test('should add bun with correct data', () => {
+    //тест: добавление булки
+    test('следует добавить булочку с правильными данными', () => {
       const state = constructorSlice.reducer(
         initialState,
         constructorSlice.actions.addItem(testBun)
@@ -73,8 +73,8 @@ describe('constructor slice', () => {
       expect(state.ingredients).toEqual([]);
     });
 
-    //тест добавления котлеты
-    test('should add main ingredient to ingredients array', () => {
+    //тест: добавление котлеты
+    test('следует добавить основной ингредиент к набору ингредиентов', () => {
       const state = constructorSlice.reducer(
         initialState,
         constructorSlice.actions.addItem(testMainIngredient)
@@ -92,8 +92,8 @@ describe('constructor slice', () => {
       expect(state.ingredients[0]?.price).toBe(424);
     });
 
-    //тест добавления соуса
-    test('should add sauce ingredient to ingredients array', () => {
+    //тест: добавление соуса
+    test('следует добавить ингредиент для соуса к набору ингредиентов', () => {
       const state = constructorSlice.reducer(
         initialState,
         constructorSlice.actions.addItem(testSauceIngredient)
@@ -111,10 +111,10 @@ describe('constructor slice', () => {
     });
   });
 
-  // --- тест удаления ингредиента --- \\
+  //тест: удаление ингредиента\\
   describe('deleteItem action', () => {
-    //тест удаления котлеты
-    test('should remove main ingredient', () => {
+    //тест: удаление котлеты
+    test('следует удалить основной ингредиент', () => {
       //добавление котлеты
       let state = constructorSlice.reducer(
         initialState,
@@ -141,8 +141,8 @@ describe('constructor slice', () => {
       expect(stateAfterDelete.ingredients[0].name).toBe('Coyc Spicy-X');
     });
 
-    // --- тест удаления соуса --- \\
-    test('should remove sauce ingredient', () => {
+    //тест: удаление соуса\\
+    test('следует удалить ингредиент соуса', () => {
       //добавление соуса
       let state = constructorSlice.reducer(
         initialState,
@@ -172,9 +172,9 @@ describe('constructor slice', () => {
     });
   });
 
-  // --- тест на изменение порядка ингредиентов --- \\
+  //тест: изменение порядка ингредиентов\\
   describe('updateAll action', () => {
-    test('should reorder ingredients correctly', () => {
+    test('следует правильно расположить ингредиенты', () => {
       //добавление котлеты
       let state = constructorSlice.reducer(
         initialState,
@@ -204,9 +204,9 @@ describe('constructor slice', () => {
     });
   });
 
-  // --- тест очистки --- \\
+  //тест: очиста\\
   describe('clearAll action', () => {
-    test('should clear all ingredients including bun', () => {
+    test('следует очистить все ингредиенты, включая булочку', () => {
       //добавление булки
       let state = constructorSlice.reducer(
         initialState,
@@ -238,9 +238,9 @@ describe('constructor slice', () => {
     });
   });
 
-  // --- тест замены булки в конструкторе --- \\
+  //тест: замена булки в конструкторе\\
   describe('replacing bun', () => {
-    test('should replace existing bun', () => {
+    test('следует заменить существующую булочку', () => {
       const anotherBun: TConstructorIngredient = {
         id: '643d69a5c3f7b9001cfa093d',
         _id: '643d69a5c3f7b9001cfa093d',
@@ -264,9 +264,9 @@ describe('constructor slice', () => {
     });
   });
 
-  // --- тест добавления одинаковых ингредиентов --- \\
+  //тест: добавление одинаковых ингредиентов\\
   describe('add sample ingredients', () => {
-    test('should allow multiple same ingredients', () => {
+    test('следует использовать несколько одинаковых ингредиентов', () => {
       let state = constructorSlice.reducer(
         initialState,
         addItem(testMainIngredient)

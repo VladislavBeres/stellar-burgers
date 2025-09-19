@@ -3,16 +3,19 @@ import { useNavigate } from 'react-router-dom';
 import { TConstructorIngredient } from '@utils-types';
 import { BurgerConstructorUI } from '@ui';
 
-import { useDispatch, useSelector } from '../../services/store';
+import { useDispatch, useSelector } from '../../services/store/store';
 
-import { isAuthCheckedSelector } from '../../services/slices/user';
-import { clearAll, selectItems } from '../../services/slices/constructor';
+import { isAuthCheckedSelector } from '../../services/slices/user/user';
+import {
+  clearAll,
+  selectItems
+} from '../../services/slices/constructor/constructor';
 import {
   createOrder,
   getOrderModalData,
   getOrderRequest,
   resetOrder
-} from '../../services/slices/newOrder';
+} from '../../services/slices/newOrder/newOrder';
 
 export const BurgerConstructor: FC = () => {
   const dispatch = useDispatch();

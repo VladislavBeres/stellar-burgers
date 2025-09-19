@@ -2,14 +2,14 @@ import { FC, useEffect, useMemo } from 'react';
 import { Preloader } from '../ui/preloader';
 import { OrderInfoUI } from '../ui/order-info';
 import { TIngredient, TOrder } from '@utils-types';
-import { useDispatch, useSelector } from '../../services/store';
-import { getIngredients } from '../../services/slices/ingredients';
-import { getOrdersFeeds } from '../../services/slices/feed';
+import { useDispatch, useSelector } from '../../services/store/store';
+import { getIngredients } from '../../services/slices/ingredients/ingredients';
+import { getOrdersFeeds } from '../../services/slices/feed/feed';
 import {
   userOrdersList,
   userOrdersByNumber,
   getUserOrderByNumber
-} from '../../services/slices/userOrders';
+} from '../../services/slices/userOrders/userOrders';
 import { useParams } from 'react-router-dom';
 
 type TOrderInfo = {

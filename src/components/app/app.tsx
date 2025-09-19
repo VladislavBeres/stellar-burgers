@@ -16,12 +16,12 @@ import { getCookie } from '../../utils/cookie';
 
 import { AppHeader, Modal, IngredientDetails, OrderInfo } from '@components';
 
-import { getIngredientsList } from '../../services/slices/ingredients';
-import { getUserData, getUserName } from '../../services/slices/user';
+import { getIngredientsList } from '../../services/slices/ingredients/ingredients';
+import { getUserData, getUserName } from '../../services/slices/user/user';
 
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { ProtectedRoute } from '../protected-route';
-import { useDispatch, useSelector } from '../../services/store';
+import { useDispatch, useSelector } from '../../services/store/store';
 import { useEffect } from 'react';
 
 const App = () => {

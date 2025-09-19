@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { Preloader } from '../ui/preloader';
 import { IngredientDetailsUI } from '../ui/ingredient-details';
-import { getIngredientsState } from '../../services/slices/ingredients';
-import { useSelector } from '../../services/store';
+import { getIngredientsState } from '../../services/slices/ingredients/ingredients';
+import { useSelector } from '../../services/store/store';
 import { useParams } from 'react-router-dom';
 
 type TIngredientDetails = {
